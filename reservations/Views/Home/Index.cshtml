@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/search.css" rel="stylesheet" />
+<link href="~/Content/custom.css" rel="stylesheet" />
+
+<div class="jumbotron">
+</div>
+
+<div class="row" ng-app="MainApp" ng-controller="MainCtrl" ng-init="icons = 'glyph'; side = 'right'; useLabel = true; inputSize = 'reg'; formType = 'basic'; validation = 'none';">
+    <div class="container">
+
+        <form role="form">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    <div class="form-group has-feedback has-feedback-left">
+                        <input type="text" placeholder="Location" id="Autocomplete2" ng-model="autocomplete" class="form-control" ng-autocomplete options="options" details="details" />
+                        @*<br>
+                        <b>autocomplete</b>: {{autocomplete}}
+                        <br><br>
+                        <b>details (formatted address)</b>: {{details.formatted_address}}*@
+                        <i class="searchbar__placeIcon  js-inbox-element"></i>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group has-feedback has-feedback-left">
+                        <input type="button" class="form-control" value="Search" style="background-color:#7b6a5d;color:#d0a234"/>
+                        
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <div class="form-group has-feedback has-feedback-left">
+                        <input type="text" class="form-control" placeholder="Check-in" />
+                        <i class="searchbar__calendarIcon"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group has-feedback has-feedback-left">
+                        <input type="text" class="form-control" placeholder="Check-out" />
+                        <i class="searchbar__calendarIcon"></i>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group has-feedback has-feedback-left">
+                        <select class="form-control" placeholder="Room" ng-model='dropValue' required ng-options='option.value as option.name for option in roomOptions' ng-change="DropDownChnaged()"></select>
+                        @*<select class="form-control" placeholder="Room" ng-model="dropValue" ng-change="DropDownChnaged()">
+                            <option value="0" selected>Select Room</option>
+                            <option value="1">1 Room</option>
+                            <option value="2">2 Room</option>
+                            <option value="3">3 Room</option>
+                            <option value="4">4 Room</option>
+                            <option value="5">5 Room</option>
+                            <option value="6">6 Room</option>
+                            <option value="7">7 Room</option>
+                            <option value="8">8 Room</option>
+                            <option value="9">9 Room</option>
+                        </select>*@
+                        <i class="searchbar__guests--guestIcon"></i>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+                   
+            <p ng-bind-html="newui | unsafe"></p>
+           
+           
+        </form>
+    </div>
+
+</div>
+

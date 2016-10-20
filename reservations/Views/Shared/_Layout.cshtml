@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" />
+    <link rel="stylesheet/less" type="text/css" href="~/Content/formChanges.css" />
+    <style>
+        .indent {
+            margin-left: 50px;
+        }
+
+        .move-down {
+            margin-top: 100px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    @*<link rel="stylesheet" type="text/css" href="style.css" />*@
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCOZnfoLNLi2XCz-BNVsGftB_gsGgp7uno&libraries=places&sensor=false"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
+    <script type="text/javascript">
+
+        var app = angular.module('MainApp', ['ngAnimate', 'ngSanitize', 'ngAutocomplete']);
+
+        app.controller('MainCtrl', function ($scope)
+        {
+            $scope.roomOptions = [
+           { name: 'Select Rooms', value: '0' },
+            { name: 'Room 1', value: '1' },
+           { name: 'Room 2', value: '2' },
+             { name: 'Room 3', value: '3' },
+               { name: 'Room 4', value: '4' },
+                 { name: 'Room 5', value: '5' },
+                   { name: 'Room 6', value: '6' },
+                     { name: 'Room 7', value: '7' },
+                       { name: 'Room 8', value: '8' },
+                         { name: 'Room 9', value: '9' },
+            ];
+            $scope.result = '';
+            $scope.options = {};
+
+            $scope.dropValue = $scope.roomOptions[0].value;
+            $scope.DropDownChnaged = function ()
+            {
+                $scope.DropDownStatus = $scope.dropValue;
+                var roomid = 1;
+
+                var newui = "";
+                while (roomid <= $scope.DropDownStatus)
+                {
+                    var ui = "<div class='row'><div class='col-md-7'></div><div class='col-md-4'><div class='col-md-4'><label id='lblroom' class='form-control'>Room " + roomid + "</label></div><div class='col-md-4'><select class='form-control' placeholder='Adult' required><option value='0' selected>Adult</option><option value='1' >1</option><option value='2'>2</option><option value='3' >3</option></select></div><div class='col-md-4'><select class='form-control' placeholder='Child' required><option value='0' selected>Child</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option></select></div></div><div class='col-md-1'></div></div>";
+                    newui = newui + ui;
+                    roomid = roomid + 1;
+                }
+                newui = newui + "<div class='row'><div class='col-md-7'></div><div class='col-md-4'><div class='col-md-12'><button  class='btn btn-info btn-block' style='background-color:#C4921B;color:#25000C;border-color: #C4921B'>Confirm</button></div></div><div class='col-md-1'></div></div>";
+                $scope.newui = newui;
+            };
+
+
+
+        });
+
+        app.filter('unsafe', function ($sce)
+        {
+            return function (val)
+            {
+                return $sce.trustAsHtml(val);
+            };
+        });
+
+
+
+
+    </script>
+    <script src="~/Scripts/ngAutocomplete.js"></script>
+    <style>
+        pre.prettyprint {
+            width: 600px;
+            overflow: auto;
+        }
+
+            pre.prettyprint > code {
+                width: initial;
+                word-wrap: normal;
+                white-space: pre;
+            }
+
+        /* fix height so won't jump around page */
+        .demo-space {
+            height: 100px;
+        }
+
+        .animate-show {
+            -webkit-transition: all ease-out 2s;
+            -moz-transition: all ease-out 2s;
+            -o-transition: all ease-out 2s;
+            transition: all ease-out 2s;
+            line-height: 20px;
+            opacity: 1;
+        }
+
+            .animate-show.ng-hide-remove.ng-hide-remove-active {
+                background: #37ff25; /* green */
+            }
+
+            .animate-show.ng-hide-add.ng-hide-add-active {
+                background: #ff2537; /* red */
+            }
+
+            .animate-show.ng-hide {
+                line-height: 0;
+                opacity: 0;
+            }
+
+        .settingsForm .form-group {
+            padding-bottom: 5px;
+            border-bottom: 1px solid lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #25000C; border-color: #C4921B;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Reservation", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "color:#d0a234" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { style = "color:#d0a234" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { style = "color:#d0a234" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { style = "color:#d0a234" })</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
