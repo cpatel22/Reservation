@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" />
+    <link rel="stylesheet/less" type="text/css" href="~/Content/formChanges.css" />
+   
+    
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
+    @*<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>*@
+    <script src="~/Scripts/ui-bootstrap-tpls-0.4.0.js"></script>
+   
+  
+   
+   
+</head>
+<body style="background-color:#E2DDD5">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #25000C; border-color: #C4921B;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Reservation", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "color:#d0a234" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { style = "color:#d0a234" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { style = "color:#d0a234" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { style = "color:#d0a234" })</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+
+   
+    @RenderSection("scripts", required: false)
+</body>
+</html>
