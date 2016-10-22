@@ -168,7 +168,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BusinessHelper\BusinessHelper.cs" />
+    <Compile Include="BusinessHelper\BusinessHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BusinessHelper\ReservationValidateAntiForgeryTokenAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -342,6 +344,12 @@
     <Content Include="Scripts\search.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.4.0.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\index2.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_Layout2.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -377,8 +385,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout2.cshtml" />
-    <Content Include="Views\Home\index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
