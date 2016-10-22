@@ -23,7 +23,7 @@ namespace reservations.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-            //http://jsfiddle.net/pxfunc/j3AN7/
+           
             return View();
         }
 
